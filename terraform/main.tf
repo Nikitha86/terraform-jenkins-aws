@@ -2,17 +2,15 @@ resource "aws_vpc" "myvpc" {
 tags = {
 Name = "terraform-jenkins-vpc"
 }
-cidr_block = var.vpc_cidr
-instance_tenancy = "default"
+cidr_block = "11.0.0.0/16"
 }
 
 resource "aws_subnet" "mysubnet" {
 vpc_id = aws_vpc.myvpc.id
 tags = {
-Name = "Subnet1"
+Name = "Subnetsub"
 }
-availability_zone = "us-east-1a"
-cidr_block = var.public_subnet_cidr
+cidr_block = "11.0.1.0/24"
 }
 
 resource "aws_security_group" "web_sg" {
