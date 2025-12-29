@@ -38,7 +38,7 @@ egress {
 }
 resource "aws_instance" "webapp" {
   ami = var.ami_id
-  instace_type = var.instance_type
+  instance_type = var.instance_type
   subnet_id = aws_subnet.mysubnet.id
   vpc_security_group_ids = [aws_security_group.web_sg.id]
   key_name = var.key_name
