@@ -6,10 +6,10 @@ cidr_block = var.vpc_cidr
 instance_tenancy = "default"
 }
 
-resource "aws_subnet" "mysubnet-1" {
+resource "aws_subnet" "mysubnet" {
 vpc_id = aws_vpc.myvpc.id
 tags = {
-Name = "Subnet-1"
+Name = "Subnet1"
 }
 availability_zone = "us-east-1a"
 cidr_block = var.public_subnet_cidr
@@ -39,7 +39,7 @@ egress {
 resource "aws_instance" "webapp" {
   ami = var.ami_id
   instace_type = var.instance_type
-  subnet.id = aws_subnet.mysubnet-1.id
+  subnet_id = aws_subnet.mysubnet.id
   vpc_security_group_ids = [aws_security_group.web_sg.id]
   key_name = var.key_name
 
